@@ -5,6 +5,7 @@
     </CLASSES>
     <SOURCES />
     <excluded>
+      <root url="file://$PROJECT_DIR$/.git" />
       <root url="file://$PROJECT_DIR$" />
       <root url="file://$PROJECT_DIR$/.idea" />
     </excluded>
