@@ -1,0 +1,89 @@
+Davis Hang
+CSCI 130 Web Development
+
+HTML5 Element Exercise - Content Sectioning & Text Content
+You may use this resource to help answer these questions:
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+
+<article> and <section> typically contain a heading (h1 - h6) *
+True
+
+Use this tag to enclose an area that may contain some or all of the following: information about the author, copyright data, links to related documents *
+<footer>
+
+When deciding between <article> and <section>, If something can stand on its own, use the <article> element *
+True
+
+These tags structure content on a page by topic & importance *
+from most to least: <h1>, <h2>, <h3>, <h4>, <h5>, <h6>
+
+You would use this tag for a forum post, a magazine or newspaper article, a blog entry, a user review, an object, or any other independent item of content *
+<article>
+
+There can only be one of these tags per document, and the tag is for the primary content in the document *
+This tag cannot be used for content that is repeated across a set of documents; nor can it be used for sidebars, navigation links, copyright information, site logos, and search forms (unless the document's main function is as a search form)
+<main>
+This element is a generic container for flow content, which does not inherently represent anything. It can be used to group elements for styling purposes (using the class or id attributes), or because they share attribute values. It should be used only when no other semantic element (such as <article> or <nav>) is appropriate. *
+<span>
+
+This tag is intended for a block of major navigation links *
+<nav>
+
+Not all links within a document must be in a nav element *
+True
+
+This element encloses contact information related to its nearest <article> or <body> ancestor; in the latter case, it applies to the whole document *
+<address>
+
+Articles can contain multiple sections. *
+True
+
+Do not use the <section> element as a generic container this is what <div> is for, especially when the sectioning is only for styling purposes. *
+True
+
+This tag surrounds content that could be placed somewhere else and stand on its own. *
+This tag is for content that is "a self-contained composition independently distributable or reusable"
+<article>
+
+You could use this tag to enclose any of the following: image, illustration, diagram, code snippet *
+<figure>
+
+A caption can be associated with the <figure> element by inserting a <figcaption> inside it *
+True
+
+This tag is for "a thematic grouping of content" *
+<section>
+
+Use this tag for sidebars, inserts, advertisements, the biography of the author, and related links on a blog *
+<aside>
+
+When deciding whether or not to use <section> or <div>, you should use <section> if you want the content to appear in the outline *
+True
+
+If you wanted to display some text "exactly as it is laid out" including with line breaks, you should use this tag. *
+This element represents preformatted text. Text within this element is typically displayed in a non-proportional ("monospace") font exactly as it is laid out in the file. Whitespace inside this element is displayed as typed.
+<pre>
+
+A document may have several nav elements *
+True
+
+Much like <ol> and <ul> create lists, this tag is used to create a list of terms and descriptions *
+Common uses for this element are to implement a glossary or to display metadata (a list of key-value pairs).
+<dl>
+
+This element encloses the main content in the <body> *
+</body>
+
+Use this tag for the bottom area of a document, article, or section *
+<footer>
+
+The footer element often has a list of links that don’t need to be in a nav element *
+True
+
+Use this tag for the top area of a document, article, or section *
+this tag is good for "a group of introductory or navigational aids"
+<header>
+
+Sections can contain multiple articles *
+True
+
