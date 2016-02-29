@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hot Import Night</title>
+</head>
+<body>
+
+{{.FWD.Cylinder}}<br>
+{{range .FWD.Cars}}
+{{.Make}} - {{.Model}} - {{.Year}}<br>
+{{end}}
+
+{{.AWD.Cylinder}}<br>
+{{range .AWD.Cars}}
+{{.Make}} - {{.Model}} - {{.Year}}<br>
+{{end}}
+
+{{.RWD.Cylinder}}<br>
+{{range .RWD.Cars}}
+{{.Make}} - {{.Model}} - {{.Year}}<br>
+{{end}}
+
+</body>
+</html>
