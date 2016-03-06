@@ -33,13 +33,16 @@ func main(){
 			if err != nil {
 				panic(err)
 			}
+			// if this would not be done, the source file would
+			// remain opened, using resources
 			defer src.Close()
-			// create destination file
+			// create destination file and joining file path
 			dst, err := os.Create(filepath.Join("./", "file.txt"))
 			if err != nil {
 				http.Error(res, err.Error(), 500)
 				return
 			}
+			// closing each file right after opening it
 			defer dst.Close()
 			// copy the uploaded file to the destination file
 			io.Copy(dst, src)
