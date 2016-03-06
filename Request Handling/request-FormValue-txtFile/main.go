@@ -27,19 +27,21 @@ func main(){
 	// handler
 	http.HandleFunc("/", func(res http.ResponseWriter,req *http.Request) {
 		// receive form submission
+		// POST takes the uploaded file(s) and saves it to disk.
 		if req.Method == "POST" {
 			src, _, err := req.FormFile("file")
 			if err != nil {
 				panic(err)
 			}
 			defer src.Close()
-			//
+			// create destination file
 			dst, err := os.Create(filepath.Join("./", "file.txt"))
 			if err != nil {
 				http.Error(res, err.Error(), 500)
 				return
 			}
 			defer dst.Close()
+			// copy the uploaded file to the destination file
 			io.Copy(dst, src)
 		}
 
