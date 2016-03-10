@@ -4,6 +4,25 @@
 package main
 
 import (
+	"log"
+	"os"
+	"text/template"
+)
+
+func main() {
+	tpl, err := template.ParseFiles("template.gohtml")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	err = tpl.Execute(os.Stdout, 2+2)
+	if err != nil {
+		log.Fatalln(err)
+	}
+}
+/*
+package main
+
+import (
 	"os"
 	"log"
 	"strings"
@@ -34,4 +53,4 @@ func main() {
 		log.Fatalln(err)
 	}
 }
-
+*/
