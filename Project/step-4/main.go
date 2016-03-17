@@ -7,8 +7,72 @@
 // variable. Marshal your variable of type "user"  to JSON. Encode that
 // JSON to base64. Store that value in the cookie.
 
+package main
 
-// testing encoding/json
+import (
+	"fmt"
+	"log"
+	"net/http"
+	"html/template"
+	"github.com/nu7hatch/gouuid"
+	"encoding/json"
+	"encoding/base64"
+)
+
+type User struct {
+	Name string
+	Age  string
+}
+
+func handler(res http.ResponseWriter, req *http.Request) {
+	// parse template
+	tpl, err := template.ParseFiles("template.gohtml")
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	uName := req.FormValue("name")
+	uAge := req.FormValue("age")
+
+	currentUser := User{
+		Name: uName,
+		Age: uAge,
+	}
+
+	bs, err := json.Marshal(currentUser)
+	if err != nil{
+		fmt.Println(err)
+	}
+
+	jsonB64 := base64.StdEncoding.EncodeToString(bs)
+
+	cookie, err := req.Cookie("session-fino")
+	if err != nil {
+
+		id, _ := uuid.NewV4()
+		cookie = &http.Cookie{
+			Name:  "session-fino",
+			Value: id.String() + " " + uName + " " + uAge + " " + jsonB64,
+			//Secure: true
+			HttpOnly: true,
+		}
+
+		http.SetCookie(res, cookie)
+	}
+	err = tpl.Execute(res, nil)
+	if err != nil {
+		http.Error(res, err.Error(), 500)
+		log.Fatalln(err)
+	}
+}
+
+func main() {
+	http.HandleFunc("/", handler)
+	log.Println("Listening...")
+	http.ListenAndServe(":8080", nil)
+}
+
+/* testing encoding/json
 package main
 
 import (
@@ -27,87 +91,4 @@ func main() {
 	json.Unmarshal(data, &p)
 	fmt.Println(p)
 }
-
-/*
-func main() {
-	p := User{"Nintendo", 64}
-	bytes, _ := json.Marshal(p)
-	fmt.Println(string(bytes))
-}
-
-// Field name tag not respected when encoding if there is a space after ":"
-
 */
-
-
-/************************************
-package main
-
-import (
-	"fmt"
-	"log"
-	"net/http"
-	"html/template"
-	"github.com/nu7hatch/gouuid"
-)
-
-type User struct {
-	Name string
-	Age string
-}
-
-func foo(res http.ResponseWriter, req *http.Request) {
-	// parse template
-	tpl, err := template.ParseFiles("template.gohtml")
-	if err != nil {
-		log.Fatalln(err)
-	}
-	// receive form submission
-	name := req.FormValue("name")
-	age := req.FormValue("age")
-	// output to console
-	fmt.Println("Name: ", name)
-	fmt.Println("Age: ", age)
-
-	// execute template
-	tpl.Execute(res, User{name, age} )
-
-	cookie, err := req.Cookie("session-fino")
-	if err != nil {
-		id, _ := uuid.NewV4()
-		cookie = &http.Cookie{
-			Name:  "session-fino",
-			Value: id.String(),
-			// Secure: true,
-			HttpOnly: true,
-		}
-		http.SetCookie(res, cookie)
-	}
-	// looks like this prints to console...debug later
-	fmt.Println(cookie)
-
-	//if req.FormValue("name") != "" && !strings.Contains(cookie.Value, "name") {
-	//	cookie.Value = cookie.Value + ` name=` + req.FormValue("name")
-	//}
-}
-
-func main(){
-	http.HandleFunc("/", foo)
-	log.Println("Listening...")
-	http.ListenAndServe(":8080", nil)
-}
-
-
-// NOT GOOD PRACTICE
-// adding user data to a cookie
-// with no way of knowing whether or not
-// they might have altered that data
-//
-// HMAC would allow us to determine
-// whether or not the data in the cookie was altered
-//
-// however, best to store user data
-// on the server
-// and keep backups
-
-*///////////////////////////////

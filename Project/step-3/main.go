@@ -6,9 +6,7 @@
 
 package main
 
-import (
-	"fmt"
-	"log"
+import ("log"
 	"net/http"
 	"html/template"
 	"github.com/nu7hatch/gouuid"
@@ -16,55 +14,44 @@ import (
 
 type User struct {
 	Name string
-	Age string
+	Age  string
 }
 
-func foo(res http.ResponseWriter, req *http.Request) {
+func handler(res http.ResponseWriter, req *http.Request) {
 	// parse template
 	tpl, err := template.ParseFiles("template.gohtml")
 	if err != nil {
 		log.Fatalln(err)
 	}
-	// receive form submission
-	name := req.FormValue("name")
-	age := req.FormValue("age")
-	// output to console
-	fmt.Println("Name: ", name)
-	fmt.Println("Age: ", age)
 
-	// execute template
-	tpl.Execute(res, User{name, age} )
-
-	//	if req.URL.Path != "/" {
-	//		http.NotFound(res, req)
-	//		return
-	//	}
+	uName := req.FormValue("name")
+	uAge := req.FormValue("age")
 
 	cookie, err := req.Cookie("session-fino")
 	if err != nil {
+
 		id, _ := uuid.NewV4()
 		cookie = &http.Cookie{
 			Name:  "session-fino",
-			Value: id.String(),
-			// Secure: true,
+			Value: id.String() + uName + uAge,
+			//Secure: true
 			HttpOnly: true,
 		}
+
 		http.SetCookie(res, cookie)
 	}
-	// looks like this prints to console...debug later
-	fmt.Println(cookie)
-
-	//if req.FormValue("name") != "" && !strings.Contains(cookie.Value, "name") {
-	//	cookie.Value = cookie.Value + ` name=` + req.FormValue("name")
-	//}
+	err = tpl.Execute(res, nil)
+	if err != nil {
+		http.Error(res, err.Error(), 500)
+		log.Fatalln(err)
+	}
 }
 
-func main(){
-	http.HandleFunc("/", foo)
+func main() {
+	http.HandleFunc("/", handler)
 	log.Println("Listening...")
 	http.ListenAndServe(":8080", nil)
 }
-
 
 // NOT GOOD PRACTICE
 // adding user data to a cookie

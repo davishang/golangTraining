@@ -2,19 +2,21 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Document</title>
+        <title> User </title>
     </head>
     <body>
         <form method="POST">
-            <label for="name">Name: </label>
-            <input type="text" id="name" name="name">
+            <label for="name"> Name </label>
+            <input type="text" id="uName" name="name">
             <br>
-            <label for="age">Age: </label>
+            <label for = "uAge"> Age </label>
             <input type="text" id="age" age="age">
             <br>
             <input type="submit">
 	    </form>
-	</body>
 
+	<h1> {{ .Name }} {{ .Age }} </h1>
+	<p> Storing information in cookie </p>
+	</body>
 </html>
 
