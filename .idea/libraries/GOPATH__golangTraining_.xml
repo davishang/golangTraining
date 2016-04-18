@@ -2,13 +2,38 @@
   <library name="GOPATH &lt;golangTraining&gt;">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../.." />
+      <root url="file://$PROJECT_DIR$/../../../golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org" />
     </CLASSES>
     <SOURCES />
     <excluded>
-      <root url="file://$PROJECT_DIR$/.git" />
-      <root url="file://$PROJECT_DIR$/../../nu7hatch/gouuid/.git" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/net/html/charset/testdata" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org/grpc/.git" />
       <root url="file://$PROJECT_DIR$" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/oauth2/.git" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org/appengine/.git" />
+      <root url="file://$PROJECT_DIR$/../../golang/protobuf/proto/testdata" />
+      <root url="file://$PROJECT_DIR$/../../golang/protobuf/protoc-gen-go/testdata" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/net/html/testdata" />
+      <root url="file://$PROJECT_DIR$/.git" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org/grpc/examples/route_guide/testdata" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org/grpc/testdata" />
+      <root url="file://$PROJECT_DIR$/../../golang/protobuf/.git" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/net/bpf/testdata" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org/cloud/.git" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org/grpc/interop/server/testdata" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/net/.git" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org/grpc/interop/client/testdata" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/net/http2/testdata" />
+      <root url="file://$PROJECT_DIR$/../../nu7hatch/gouuid/.git" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org/api/google-api-go-generator/testdata" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org/api/.git" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org/cloud/datastore/testdata" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org/grpc/transport/testdata" />
       <root url="file://$PROJECT_DIR$/.idea" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org/grpc/test/testdata" />
+      <root url="file://$PROJECT_DIR$/../../../google.golang.org/cloud/storage/testdata" />
+      <root url="file://$PROJECT_DIR$/../../../golang.org/x/oauth2/google/testdata" />
     </excluded>
   </library>
 </component>
